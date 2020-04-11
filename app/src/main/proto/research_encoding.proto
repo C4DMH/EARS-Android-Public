@@ -1,0 +1,137 @@
+/*
+ * AUTHOR = Peter Lovett
+ * BUSINESS = Center for Digital Mental Health
+ * DATA_FORMAT = 2.1.0
+ *
+ * Make sure that before each message the number of bytes
+ * in the message is encoded as a 32 bit var int. This
+ * allows decoding of files with multiple message types.
+ *
+ * This proto file describes the first version of encodings
+ * for the EARS research app. It is CRITICAL that future
+ * versions do not reuse field numbers from old versions.
+ * Always use new numbers for new fields.
+ *
+ */
+
+syntax = "proto3";
+
+package research;
+
+
+message Header {
+  string deviceID = 1;
+  string modelName = 2;
+  string modelNumber = 3;
+  string osVersion = 4;
+  string appVersion = 5;
+  string timezone = 6;
+}
+
+message AccelGyroEvent {
+  int64 timestamp = 1;
+  float x = 2;
+  float y = 3;
+  float z = 4;
+}
+
+message AppUsageEvent {
+  int64 FirstTimeStamp = 1;
+  int64 LastTimeStamp = 2;
+  int64 TimeLastUsed = 3;
+  int32 TimeInForeground = 4;
+  string app = 5;
+}
+
+message BatteryEvent {
+  enum State {
+    UNKNOWN = 0;
+    UNPLUGGED = 1;
+    CHARGING = 2;
+    FULL = 3;
+  }
+  int64 timestamp = 1;
+  State state = 2;
+  float level = 3;
+}
+
+message CallEvent {
+  enum State {
+    UNKNOWN = 0;
+    INCOMING = 1;
+    DIALING = 2;
+    CONNECTED = 3;
+    DISCONNECTED = 4;
+  }
+  int64 timestamp = 1;
+  State state = 2;
+}
+
+message EMAEvent {
+  message Question {
+    enum YesNo {
+      UNKNOWN = 0;
+      NO = 1;
+      YES = 2;
+    }
+    message FormItem {
+      string form_ID = 1;
+      string string_answer = 2;
+      YesNo bool_answer = 3;
+      int32 int_answer = 4;
+      repeated string string_multiple_answer = 5;
+    }
+    string question_ID = 1;
+    string string_answer = 2;
+    YesNo bool_answer = 3;
+    float completion_time = 4;
+    int32 int_answer = 5;
+    bytes byte_blob = 6;
+    repeated string string_multiple_answer = 7;
+    repeated FormItem form_item = 8;
+  }
+  enum Status {
+    UNKNOWN = 0;
+    CANCELLED = 1;
+    COMPLETE = 2;
+  }
+  int64 time_initiated = 1;
+  int64 time_completed = 2;
+  string UUID = 3;
+  Status status = 4;
+  repeated Question question = 5;
+  int32 game_level = 6;
+  int32 game_streak = 7;
+  int64 game_level_xp = 8;
+}
+
+message GPSEvent {
+  int64 timestamp = 1;
+  double lat = 2;
+  double lon = 3;
+}
+
+message KeyEvent {
+  int64 timestamp = 1;
+  string app = 2;
+  string text_field = 3;
+}
+
+message LightEvent {
+  int64 timestamp = 1;
+  double level = 2;
+}
+
+message MusicEvent {
+  int64 timestamp = 1;
+  string app = 2;
+  string title = 3;
+  string text = 4;
+}
+
+message SurveyEvent {
+  int64 timestamp = 1;
+  string UUID = 2;
+  string type = 3;
+  int64 intended_delivery_time = 4;
+}

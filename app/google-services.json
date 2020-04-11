@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "405094133915",
+    "firebase_url": "https://earsnokeyboard.firebaseio.com",
+    "project_id": "earsnokeyboard",
+    "storage_bucket": "earsnokeyboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405094133915:android:25dba278a7da24e7",
+        "android_client_info": {
+          "package_name": "gwicks.com.earsnokeyboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405094133915-j8a5r5ar2ku11ugc263hku3k448coa5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0FtO7r07W7vU6b9znB3KtlrXIPBhp3fA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

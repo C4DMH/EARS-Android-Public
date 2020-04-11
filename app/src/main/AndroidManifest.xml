@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="gwicks.com.earsnokeyboard">
+
+
+    <uses-sdk tools:overrideLibrary="com.astuetz.pagerslidingtabstrip" />
+
+    <!--<uses-sdk tools:overrideLibrary="android.support.v13" />-->
+
+    <!--<uses-sdk tools:overrideLibrary="com.astuetz.pagerslidingtabstrip, android.support.v13, com.google.android.gms.play_services, com.google.android.gms.ads.impl, com.google.android.gms.ads,-->
+    <!--com.google.android.gms, com.google.android.gms.base, com.google.android.gms.tasks, com.google.android.gms.clearcut, com.google.android.gms.gass, com.google.android.gms.analytics,-->
+    <!--com.google.android.gms.appinvite, com.google.android.gms.+, com.google.android.gms.auth.api" />-->
+    <!--package="com.sevencupsoftea.ears"-->
+
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true"
+        tools:ignore="UnusedAttribute" />
+    <!-- http://d.android.com/guide/practices/screens_support.html read about legacy. -->
+
+
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- REQUIRED FOR AMAZON S3 UPLOAD -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ADDED FROM VIDEO DIARY -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Added for Mic Record -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"/>
+    <uses-permission android:name="com.garmin.android.apps.connectmobile.permission.READ_DEVICE_RECORDS"/>
+
+    <uses-permission
+        android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    <!--<uses-permission android:name="android.permission.SEND_SMS"/>-->
+
+
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="true" />
+
+    <!-- currently, only support touch and fake-touch devices -->
+    <uses-feature android:name="android.hardware.faketouch" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+
+
+    <application
+        android:name=".AnyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/icon_round"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <!--<activity android:name=".MainActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
+
+        <activity android:name=".EMA"
+                  android:launchMode="singleTask"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".Setup.LocationPermission"
+                  android:launchMode="singleTask"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name=".SecondEMA"
+                  android:screenOrientation="portrait"/>
+
+        <activity android:name="gwicks.com.earsnokeyboard.FireBaseEMA"
+                  android:launchMode="singleTask"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true"
+                  android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".DailyEMA"
+                  android:launchMode="singleTask"
+                  android:taskAffinity=""
+                  android:excludeFromRecents="true"
+                  android:screenOrientation="portrait"/>
+
+
+        <!--android:icon="@drawable/video"-->
+
+
+        <receiver android:name=".RebootBroadCastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name="com.radicalninja.logger.AlarmReceiver">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="com.codepath.CUSTOM_INTENT"></action>-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <receiver android:name=".StatsAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".DailyEMAAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".DailyEMAUploadReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".SensorUploadReceiver"/>
+        <receiver android:name=".EMAUploadReceiver"/>
+
+        <receiver android:name=".UploadGPSAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".MicRecordUploadAlarm">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".MusicUploadReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".PhotoUploadReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".SuicideAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".GarminUploadReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".KeyloggerUploadAlarm">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".PhotoCropBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.CUSTOM_INTENT"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".PowerConnectionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".FirebaseEMAReceiver">
+
+        </receiver>
+        <receiver android:name=".CMU.CmuDailyOneMinuteAlarm"></receiver>
+        <receiver android:name=".CMU.CMUBalloonAlarm"></receiver>
+
+        <receiver android:name=".CMU.CMUFiveMinAlarm"/>
+
+        <receiver android:name=".Duke.DukeEMAAlarm"/>
+
+
+
+        <activity android:name=".FirebaseEMAStart"/>
+
+
+        <!--<receiver android:name="com.radicalninja.logger.IncomingCallListener">-->
+        <!--<intent-filter>-->
+        <!--&lt;!&ndash;<action android:name="android.intent.action.NEW_OUTGOING_CALL" />&ndash;&gt;-->
+        <!--<action android:name="android.intent.action.PHONE_STATE" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <receiver android:name=".OutgoingCallListener">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".EMAAlarmReceiver"/>
+        <receiver android:name=".EMASleepReceiver"/>
+        <receiver android:name=".EMASleepTwoReceiver"/>
+
+
+
+
+
+        <!--<activity-->
+            <!--android:name=".AlarmActivity"-->
+            <!--android:label="@string/title_activity_video" />-->
+
+        <activity
+            android:name=".Setup.FaceDetect"
+            android:screenOrientation="portrait"/>
+        <!--android:configChanges="orientation"/>-->
+
+
+        <activity android:name=".Setup.SetupStepOne"
+                  android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.Intro"
+            android:label="@string/ime_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".Setup.SetupStepTwo"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.SetupStepThree"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.SetupStepThreeOne"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.SetupStepThreeThree"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.SetupStepFour"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+
+        <activity
+            android:name=".Setup.SetupStepFive"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.StudyCodeVerification"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".KKStudyCode"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <!--<activity-->
+        <!--android:name=".SetupStepSix">-->
+        <!--</activity>-->
+
+
+
+        <activity
+            android:name=".Setup.SetupStepSeven"
+            android:screenOrientation="portrait"
+            android:noHistory="true">
+
+        </activity>
+
+        <!--added singleTask 5/4/18 to see what it did-->
+
+        <activity
+            android:name=".Setup.FinishInstallScreen"
+
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".Setup.BatteryOptimization"
+
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+
+
+<!--        Added for CMU 7th Feb 2020-->
+
+        <activity android:name=".CMU.ActivityTwo"
+
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.ActivityThree"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.ActivityFour"
+
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.SingleSeekBar"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinIntro"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinTwo"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinThree"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.TextEntryClass"
+            android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".CMU.AdditionalQuestionTwo"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinFour"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinFive"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinSix"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinSeven"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinEight"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.FiveMinExtraSex"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.BalloonEMATwo"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.BalloonEMAOne"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".CMU.ParentsAdditional"
+            android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".Duke.DukeIntro"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Duke.DukeEMAOne"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Duke.DukeEMATwo"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Duke.DukeEMAThree"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+
+
+
+
+
+
+
+        <service android:name=".AccGryLgt"/>
+
+        <!--<activity-->
+            <!--android:name=".Garmin.BaseActivity"-->
+            <!--android:screenOrientation="portrait">-->
+
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Garmin.DeviceListActivity"-->
+            <!--android:screenOrientation="portrait">-->
+
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Garmin.ScanningActivity"-->
+            <!--android:screenOrientation="portrait">-->
+
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name=".Garmin.PairingActivity"-->
+            <!--android:screenOrientation="portrait">-->
+
+        <!--</activity>-->
+
+
+
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+
+        <service android:name=".StatsJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="true"/>
+
+
+
+        <service android:name=".MusicNotificationListener"
+
+                 android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".KeyLogger"
+                 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+                 android:label="@string/accessibility_service_label">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+
+        </service>
+
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/noti_icon" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+
+    </application>
+
+</manifest>
