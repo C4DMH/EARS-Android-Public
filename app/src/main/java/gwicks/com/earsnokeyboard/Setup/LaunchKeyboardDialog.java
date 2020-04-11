@@ -54,19 +54,7 @@ public class LaunchKeyboardDialog extends DialogFragment {
 
                         installKeyboard();
                     }
-                })
-
-        // Not sure we want a cancel button, so going to comment this out 10th April 2018
-//                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        //Toast.makeText(getActivity(), "HelloHello", Toast.LENGTH_LONG).show();
-//                        //mListener.onDialogNegativeClick(EmailSecureDeviceID.this);
-//                        dismiss();
-//                    }
-//                });
-
-        ;
+                });
         return builder.create();
 
     }

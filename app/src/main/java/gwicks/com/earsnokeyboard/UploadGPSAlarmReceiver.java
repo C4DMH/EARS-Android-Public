@@ -70,14 +70,6 @@ public class UploadGPSAlarmReceiver extends BroadcastReceiver {
             }
         }
         ArrayList<File> encryptedFiles = new ArrayList<>(Arrays.asList(directory.listFiles()));
-        
-//        if(Constants.awsBucket == null){
-//            Log.d(TAG, "onReceive: setting bucket!");
-//            prefs =PreferenceManager.getDefaultSharedPreferences(mContext);
-//            String s = prefs.getString("bucket", "default");
-//            Constants.awsBucket = s;
-//        }
-
         Util.uploadFilesToBucket(encryptedFiles, true,logUploadCallback, mContext, folder);
     }
 

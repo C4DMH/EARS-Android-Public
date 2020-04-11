@@ -32,10 +32,7 @@ public class SetupStepTwo extends AppCompatActivity {
 
     public void startLocationInstall(View v)
     {
-//        Intent installIntent = new Intent(SetupStepTwo.this, SetupStepThree.class);
-//        installIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        SetupStepTwo.this.startActivity(installIntent);
-//        finish();
+
         Intent locationIntent = new Intent(SetupStepTwo.this, LocationPermission.class);
         locationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         SetupStepTwo.this.startActivity(locationIntent);

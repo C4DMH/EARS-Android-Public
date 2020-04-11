@@ -214,114 +214,6 @@ public class FinishInstallScreen extends AppCompatActivity {
 
 
 
-        // All the extra 7 cups buttons at bottom being removed
-
-//        moodCheck = (ImageView) findViewById(R.id.imageView41);
-//        needToTalkClosed = (ImageView) findViewById(R.id.imageView6);
-//        talkText = (TextView) findViewById(R.id.textViewTalk);
-//        talkText.setVisibility(View.GONE);
-//
-//        preferences = findViewById(R.id.imageView42);
-//        //preferences.setTag(1);
-//        prefText = findViewById(R.id.textView2);
-//        prefText.setVisibility(View.GONE);
-//        prefText.setTag(1);
-//
-//
-//        needToTalkClosed.setTag(1);
-//        mood = (TextView) findViewById(R.id.textView1);
-//        mood.setTag(1);
-//        mood.setVisibility(View.GONE);
-//
-//        //textViewEmail = (TextView)findViewById(R.id.textViewEmail);
-//
-//        garminConnect = (TextView)findViewById(R.id.textViewEmail);
-
-
-
-
-//        SpannableString ss = new SpannableString("Get free, anonymous and confidential support at 7 Cups. Listeners available 24/7 to help you feel better\n\nGet the App");
-//        ClickableSpan clickableSpan = new ClickableSpan() {
-//            @Override
-//            public void onClick(View textView) {
-//                launch7cups();
-//            }
-//
-//        };
-//        //ss.setSpan(clickableSpan, 48, 55, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        ss.setSpan(clickableSpan, 106, 117, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-//        talkText.setText(ss);
-//        talkText.setMovementMethod(LinkMovementMethod.getInstance());
-
-//        garminConnect.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "onClick: in lauched garmin connect button");
-//                //launchSendEmailDialog();
-//                Intent myIntent = new Intent(FinishInstallScreen.this, DeviceListActivity.class);
-//
-//                startActivity(myIntent);
-//
-//            }
-//        });
-
-//
-//        needToTalkClosed.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "onClick: Clicked");
-//
-//                if (needToTalkClosed.getTag().equals(1)) {
-//                    talkText.setVisibility(View.VISIBLE);
-//                    needToTalkClosed.setTag(2);
-//
-//                } else {
-//                    talkText.setVisibility(View.GONE);
-//                    needToTalkClosed.setTag(1);
-//                }
-//            }
-//        });
-//
-//        preferences.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "onClick: Clicked moodcheck");
-//
-//                if (prefText.getTag().equals(1)) {
-//                    prefText.setVisibility(View.VISIBLE);
-//                    Log.d(TAG, "onClick: visable");
-//                    prefText.setTag(2);
-//
-//                } else {
-//                    prefText.setVisibility(View.GONE);
-//                    Log.d(TAG, "onClick: invisible");
-//                    prefText.setTag(1);
-//                }
-//            }
-//        });
-//
-//        moodCheck.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "onClick: Clicked moodcheck");
-//
-//                if (mood.getTag().equals(1)) {
-//                    mood.setVisibility(View.VISIBLE);
-//                    Log.d(TAG, "onClick: visable");
-//                    mood.setTag(2);
-//
-//                } else {
-//                    mood.setVisibility(View.GONE);
-//                    Log.d(TAG, "onClick: invisible");
-//                    mood.setTag(1);
-//                }
-//            }
-//        });
-
-        //Toast.makeText(this, "THE SECURE DEVICE ID IS: " + secureID, Toast.LENGTH_LONG).show();
         if (!isAccessGranted()) {
             try{
                 showDialog();
@@ -385,29 +277,8 @@ public class FinishInstallScreen extends AppCompatActivity {
         startPhotoCrop();
         Log.d(TAG, "onCreate: alarmstarted = " + alarmStarted);
 
-        // Comment this out to remove the EMA component - TODO why was this still here?
-//        if(alarmStarted != true){
-//            Handler handler = new Handler();
-//            handler.postDelayed(new Runnable() {
-//                public void run() {
-//                    Log.d(TAG, "run: in handler, waiting for 10 min");
-//                    //startSuicideEMAAlarm();
-//                    startEMAAlarm();
-//                }
-//            }, 1000*60*2);
-//
-//        }
         Log.d(TAG, "onCreate: aws bucket = " + Constants.awsBucket);
 
-        if(((Constants.awsBucket.equals("maps-study")) || (Constants.awsBucket.equals("earstest")))){
-            Log.d(TAG, "onCreate: starting suicide alarm");
-            startSuicideEMAAlarm();
-        }
-
-        if(Constants.awsBucket.equals("neuroteentest-study") || Constants.awsBucket.equals("neuroteen-study") || Constants.awsBucket.equals("earstest")){ //TODO remove
-
-            Log.d(TAG, "onCreate: aws bucket = " + Constants.awsBucket);
-            startFiveMinEMA();
 
         }else{
             if(alarmStarted != true){
@@ -488,14 +359,6 @@ public class FinishInstallScreen extends AppCompatActivity {
         }
     }
 
-//    public void launch7cups() {
-//        Log.d(TAG, "launch7cups: clicked");
-//
-//        Intent intent = new Intent(Intent.ACTION_VIEW);
-//        intent.setData(Uri.parse("market://details?id=com.sevencupsoftea.app"));
-//        startActivity(intent);
-//        //https://play.google.com/store/apps/details?id=com.sevencupsoftea.app
-//    }
 
 
     // 8th Feb 2018, this is first attempt to move the MainActivity and VideoActivity Classes into this final install Activity.
@@ -761,29 +624,6 @@ public class FinishInstallScreen extends AppCompatActivity {
     }
 
 
-//    public void startGarminUploadAlarm() {
-//        Log.d(TAG, "EMA upload in start alarm");
-//
-//        Calendar cal = Calendar.getInstance();
-//        long when = cal.getTimeInMillis();
-//        String timey = Long.toString(when);
-//
-//        //System.out.println("The time changed into nice format is: " + theTime);
-//
-//        Log.d("the time is: ", when + " ");
-//
-//        cal.setTimeInMillis(System.currentTimeMillis());
-//        cal.set(Calendar.HOUR_OF_DAY, 23);
-//        cal.set(Calendar.MINUTE, 15);
-//
-//        AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        Intent intent = new Intent(this, GarminUploadReceiver.class);
-//        //statsIntent = PendingIntent.getBroadcast(this, 3, intent, 0);
-//        garminIntent = PendingIntent.getBroadcast(this, 11, intent, 0);
-//        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, garminIntent);
-//
-//
-//    }
 
     // @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void startPhotoUploadAlarm() {
@@ -893,35 +733,6 @@ public class FinishInstallScreen extends AppCompatActivity {
             //alarmStarted = true;
         }
         Log.d(TAG, "startEMAAlarm: in start ema alarm");
-
-//        boolean alarmUp = (PendingIntent.getBroadcast(this, 21,
-//                new Intent(FinishInstallScreen.this, EMAAlarmReceiver.class),
-//                PendingIntent.FLAG_NO_CREATE) != null);
-//
-//        Log.d(TAG, "Ema alarm boolean alarm up is: " + alarmUp);
-//
-//        if(alarmUp){
-//            Log.d(TAG, "startEMAAlarm: alarm already up, skipping");
-//            return;
-//        }
-//
-//
-//        Calendar cal = Calendar.getInstance();
-//        long when = cal.getTimeInMillis();
-//
-//        cal.setTimeInMillis(System.currentTimeMillis());
-//        //cal.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-//        cal.set(Calendar.HOUR_OF_DAY, 8);
-//        cal.set(Calendar.MINUTE, 15);
-//
-//        AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        Intent intent = new Intent(this, EMAAlarmReceiver.class);
-//        intent.putExtra("EMA", "EMA1");
-//        startEMAIntent = PendingIntent.getBroadcast(this, 21, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        //alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),alarmMgr.INTERVAL_DAY * 7 , startEMAIntent);
-//        alarmMgr.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 120, startEMAIntent);
-//        Log.d(TAG, "startEMAAlarm first 7 days: alarm should be set");
-//        //alarmStarted = true;
 
 
     }

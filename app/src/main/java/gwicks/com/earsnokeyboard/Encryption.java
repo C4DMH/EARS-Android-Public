@@ -50,9 +50,6 @@ public class Encryption {
         android.util.Log.d(TAG, "encrypt: in Encrytpion.java");
 
 
-        // added 15th Feb 2020 to try and skip encryption
-
-        byte[] iv = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
         IvParameterSpec ivSpec = new IvParameterSpec(iv);
 

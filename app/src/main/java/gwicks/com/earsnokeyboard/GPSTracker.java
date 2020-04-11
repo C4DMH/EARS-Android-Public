@@ -226,33 +226,6 @@ public class GPSTracker {
         alertDialog.show();
     }
 
-//    @Override
-//    public void onLocationChanged(Location location) {
-//        Log.d(TAG, "onLocationChanged: chamged");
-//        float bestAccuracy = -1f;
-//        if (location.getAccuracy() != 0.0f
-//                && (location.getAccuracy() < bestAccuracy) || bestAccuracy == -1f) {
-//            locationManager.removeUpdates(this);
-//        }
-//        bestAccuracy = location.getAccuracy();
-//    }
-//
-//    @Override
-//    public void onProviderDisabled(String provider) {
-//    }
-//
-//    @Override
-//    public void onProviderEnabled(String provider) {
-//    }
-//
-//    @Override
-//    public void onStatusChanged(String provider, int status, Bundle extras) {
-//    }
-
-//    @Override
-//    public IBinder onBind(Intent arg0) {
-//        return null;
-//    }
 
     public float getAccurecy()
     {

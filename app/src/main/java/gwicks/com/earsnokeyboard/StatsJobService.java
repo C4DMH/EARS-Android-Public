@@ -26,12 +26,7 @@ public class StatsJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         GPSTracker mGPSTracker = new GPSTracker(this);
-
-
-        //myContext = this.getApplication().getApplicationContext();
         Calendar c = Calendar.getInstance();
-
-        //Log.d(TAG, "doWork: context = " + myContext);
         Log.d(TAG, "doWork: context this= " + this);
 
         Log.d(TAG, "doWork: GPS tracker = " + mGPSTracker);

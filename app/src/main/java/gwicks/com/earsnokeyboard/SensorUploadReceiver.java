@@ -70,7 +70,6 @@ public class SensorUploadReceiver extends BroadcastReceiver {
         for(File each : files){
 
             Log.d(TAG, "onReceive: path = " + each.getAbsolutePath());
-//            Encrypt(formattedDate + "_" + i, each.getAbsolutePath(), sensor);
             Encrypt(each.getName(), each.getAbsolutePath(), sensor);
 
             i = i + 1;

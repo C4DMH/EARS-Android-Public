@@ -30,23 +30,8 @@ public class AnyApplication extends Application {
     public void onCreate(){
         Log.d(TAG, "onCreate: anyapplication oncreate");
 
-
-
         super.onCreate();
 
-        //Constants.awsBucket = "neuroteentest-study"; //TODO remove
-        //Constants.awsBucket = "earstest"; //TODO remove
-
-//        secureID = Settings.Secure.getString(
-//                AnyApplication.getInstance().getContentResolver(), Settings.Secure.ANDROID_ID);
-
-//        if (LeakCanary.isInAnalyzerProcess(this)) {
-//            // This process is dedicated to LeakCanary for heap analysis.
-//            // You should not init your app in this process.
-//            return;
-//        }
-//        LeakCanary.install(this);
-        //context = this ;
         instance = this;
 
 
@@ -85,15 +70,6 @@ public class AnyApplication extends Application {
         if(Constants.secureID == null){
             Constants.secureID = Settings.Secure.getString(
                     AnyApplication.getInstance().getContentResolver(), Settings.Secure.ANDROID_ID);
-        }
-
-        if(Constants.encryption == null){
-            if((Constants.awsBucket.equals("maps-study")) || (Constants.awsBucket.equals("conte-study"))|| (Constants.awsBucket.equals("pms-study") )){
-                Constants.encryption = true;
-            }else{
-                Constants.encryption = false;
-                Log.d(TAG, "onCreate: encryption is switched off");
-            }
         }
 
         //setDeactivated();

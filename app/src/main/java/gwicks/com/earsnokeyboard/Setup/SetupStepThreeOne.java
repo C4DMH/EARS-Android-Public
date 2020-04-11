@@ -65,40 +65,6 @@ public class SetupStepThreeOne extends AppCompatActivity {
 
     public void isKeyboardSelected() {
 
-//        final Handler handler = new Handler();
-//
-//        Runnable checkOverlaySetting = new Runnable() {
-//
-//            @Override
-//            //@TargetApi(23)
-//            public void run() {
-//                Log.d(TAG, "run: 1");
-//                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-//                    Log.d(TAG, "run: 2");
-//                    //return;
-//                }
-//
-//                // 18th Jan 2018, below works, trying to stop using the intent ( ie try back button below).
-//                if (SetupSupport.isThisKeyboardSetAsDefaultIME(mContext)) {
-//                    Log.d(TAG, "run: 3");
-//                    //You have the permission, re-launch MainActivity
-//                    Intent i = new Intent(SetupStepThreeOne.this, SetupStepThreeThree.class);
-//                    Log.d(TAG, "run: 4");
-//                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    startActivity(i);
-//                    return;
-//                }
-//
-//
-//                handler.postDelayed(this, 200);
-//            }
-//        };
-//
-//        InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
-//        imeManager.showInputMethodPicker();
-//        handler.postDelayed(checkOverlaySetting, 1000);
-
-
     }
 
     @Override

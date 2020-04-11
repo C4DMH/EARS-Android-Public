@@ -152,30 +152,6 @@ public class MusicNotificationListener extends NotificationListenerService {
             prevTitle = currentTitle;
         }
 
-        // 11th December 2019 code for also getting messages
-
-//        else if(textPrograms.contains(pack)){
-//            Log.d(TAG, "onNotificationPosted: the text program was found on device");
-//            Log.d(TAG, "onNotificationPosted: the text program was: " + pack);
-//            Log.d(TAG, "onNotificationPosted: and the title was: " + title);
-//            Log.d(TAG, "onNotificationPosted: the message post time was: " + sbn.getPostTime());
-//            Log.d(TAG, "onNotificationPosted: the ID was:  " + sbn.getId());
-//            Log.d(TAG, "onNotificationPosted: the key was: " + sbn.getKey());
-//            Log.d(TAG, "onNotificationPosted: the group key was: " + sbn.getGroupKey());
-//
-//            try{
-//                MessageDigest md = MessageDigest.getInstance("SHA-512");
-//                byte[] hashedBytes = md.digest(title.getBytes("UTF-8"));
-//                String encoded = Base64.encodeToString(hashedBytes, Base64.DEFAULT);
-//                Log.d(TAG, "onNotificationPosted: hash is: " + encoded);
-//
-//
-//            }catch(Exception e){        //(NoSuchAlgorithmException |UnsupportedEncodingException e){
-//                Log.d(TAG, "onNotificationPosted: error: " + e.toString());
-//            }
-//
-//
-//        }
     }
 
     @Override

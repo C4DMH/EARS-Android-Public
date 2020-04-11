@@ -50,8 +50,7 @@ public class SuicideAlarmReceiver  extends BroadcastReceiver {
             //mNotificationManager = FinishInstallScreen.notificationManager;
             mNotificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE) ;
             Log.d(TAG, "onReceive: notificiation manager  = " + mNotificationManager);
-            //mNotificationManager = EMA.
-            //mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
         }
         Log.d(TAG, "onReceive: before clear notifications");
 

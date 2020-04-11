@@ -85,10 +85,6 @@ public class SetupStepFour extends AppCompatActivity {
 
 
         Intent intent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS");
-        //Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-        //intent.putExtra("finishActivityOnSaveCompleted", true);
-        // intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$SecuritySettingsActivity"));
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
 
         handler2.postDelayed(checkOverlaySetting2, 1000);

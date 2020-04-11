@@ -46,24 +46,6 @@ public class SetupStepOne extends AppCompatActivity {
         informedConsent = getString(R.string.informed_consent);
 
 
-
-
-
-
-//        startInstallButton =  (Button) findViewById(R.id.button_continue3);
-//
-//        startInstallButton.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view){
-//                Log.d(TAG, "onClick: Clicked");
-//
-//                startInstall(view);
-//
-//
-//            }
-//        });
-
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 //
@@ -92,26 +74,6 @@ public class SetupStepOne extends AppCompatActivity {
 
                 if(mImageViewPager.getCurrentItem() == 2){
 
-                    // Old version move to the informed consent being replaced by study code screen 12th Feb 2019
-
-//                    AlertDialog alertDialog = new AlertDialog.Builder(SetupStepOne.this).create();
-//                    //alertDialog.setTitle("7 Cups EARS: Informed Consent & Terms of Service Agreement");
-//                    alertDialog.setTitle("EARS: Informed Consent & Terms of Service Agreement");
-//                    alertDialog.setMessage(Html.fromHtml(informedConsent));
-//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "I Disagree",
-//                            new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            });
-//                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"I Agree",new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            dialog.dismiss();
-//                            startInstall();
-//                        }
-//                    });
-//                    alertDialog.show();
-
 
                     // New verision with study codes
 
@@ -128,12 +90,6 @@ public class SetupStepOne extends AppCompatActivity {
                 else{
                     mImageViewPager.setCurrentItem(getItem(+1), true);
                 }
-
-
-
-
-
-
             }
         });
 
@@ -191,12 +147,6 @@ public class SetupStepOne extends AppCompatActivity {
 
                 default: return ThirdFragment.newInstance("ThirdFragment, Default");
 
-//                case 0: return FirstFragment.newInstance("FirstFragment, Instance 1");
-//                case 1: return SecondFragment.newInstance("SecondFragment, Instance 1");
-//                case 2: return ThirdFragment.newInstance("ThirdFragment, Instance 1");
-//                case 3: return FourthFragment.newInstance("ThirdFragment, Instance 2");
-//                case 4: return ThirdFragment.newInstance("ThirdFragment, Instance 3");
-//                default: return ThirdFragment.newInstance("ThirdFragment, Default");
             }
         }
 

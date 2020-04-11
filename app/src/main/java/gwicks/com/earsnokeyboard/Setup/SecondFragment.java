@@ -16,21 +16,6 @@ import gwicks.com.earsnokeyboard.R;
 public class SecondFragment extends Fragment {
 
     private static final String TAG = "SecondFragment";
-//
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if (isVisibleToUser) {
-//            ((SetupStepOne)getActivity()).updateStatusBarColor("#0075e1", this);
-//            Log.d(TAG, "onCreateView: update coulour in : 2");
-//
-//        }
-//        else {
-//            Log.d(TAG, "setUserVisibleHint: in else");
-//        }
-//    }
-
-
 
 
 
@@ -40,14 +25,6 @@ public class SecondFragment extends Fragment {
         ((SetupStepOne)getActivity()).updateStatusBarColor("#0075e1", this);
         Log.d(TAG, "onCreateView: update coulour in : 2");
 
-
-
-
-
-
-//        TextView tv = (TextView) v.findViewById(R.id.tvFragSecond);
-//        tv.setText(getArguments().getString("msg"));
-
         return v;
     }
 
@@ -56,12 +33,6 @@ public class SecondFragment extends Fragment {
         Log.d(TAG, "newInstance: second");
 
         SecondFragment f = new SecondFragment();
-
-
-//        Bundle b = new Bundle();
-//        b.putString("msg", text);
-//
-//        f.setArguments(b);
 
         return f;
     }

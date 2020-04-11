@@ -50,9 +50,6 @@ public class FaceDetectAndCrop extends AsyncTask<String, Void, String> {
     FaceDetectAndCrop(Context context){
         mContext = context;
 
-//        mEncryption = new Encryption();
-//        mTransferUtility = Util.getTransferUtility(mContext);
-
         path = mContext.getExternalFilesDir(null) + "/videoDIARY/CroppedImages/";
         File directory = new File(path);
         if(!directory.exists()){
@@ -63,8 +60,6 @@ public class FaceDetectAndCrop extends AsyncTask<String, Void, String> {
     // Testing method, not used in actual code
 
     public void detectAndCrop(Context context){
-
-
 
         path = mContext.getExternalFilesDir(null) + "/videoDIARY/CroppedImages/";
         File directory = new File(path);
@@ -113,7 +108,6 @@ public class FaceDetectAndCrop extends AsyncTask<String, Void, String> {
             y1 = Math.max(0,thisFace.getPosition().y);
             x2 = x1 + thisFace.getWidth();
             y2 = y1 + thisFace.getHeight();
-            //tempCanvas.drawRoundRect(new RectF(x1, y1, x2, y2), 2, 2, myRectPaint);
             Log.d(TAG, "onClick: x,y,x,y: " + x1 + ", " + y1 + ", " + x2 + ", " + y2);
 
             int a = Math.round(x1) * 10;
@@ -123,7 +117,6 @@ public class FaceDetectAndCrop extends AsyncTask<String, Void, String> {
             int e = Math.round(x2) * 10;
             int f = Math.round(y2) * 10;
             Log.d(TAG, "onClick: int a: " + a + " int b " + b + " int c: " + e + "int f: " + f);
-
 
 
             Bitmap newBitnmap  = Bitmap.createBitmap(myBitmap, a,b,c,d);

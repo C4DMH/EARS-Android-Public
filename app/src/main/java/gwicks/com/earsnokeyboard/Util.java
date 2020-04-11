@@ -218,13 +218,6 @@ public class Util {
             sTransferUtility = new TransferUtility(getS3Client(context.getApplicationContext()),
                     context.getApplicationContext());
         }
-//        if(BUCKET_NAME == null){
-//            getApp
-////            prefs = PreferenceManager.getDefaultSharedPreferences(context);
-////            BUCKET_NAME
-//        }
-
-
 
         for (final File file : files) {
             uploadFileToBucket(file, file.getName(), deleteAfter, callback, folder);
@@ -322,20 +315,6 @@ public class Util {
                         callback.onStart(id, state);
                         break;
                     case COMPLETED:
-
-//                        long unixTime = System.currentTimeMillis() / 1000L;
-//                        String desination = Environment.getExternalStorageDirectory().getAbsolutePath() + "/videoDIARY/buffered_" + unixTime + ".log";
-//
-//
-//                        File destination = new File(desination);
-//                        try {
-//                            FileUtils.copyFile(file, destination);
-//                            Log.d("LogUploadTask", "Copyting file to VideoDIARY");
-//
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-
 
                         Log.d(TAG, String.format("Transfer ID %d has completed", id));
                         callback.onComplete(id, state);

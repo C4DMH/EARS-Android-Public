@@ -41,15 +41,7 @@ public class UStats {
         Log.d(TAG, "getUsageStatsList: SDF =  " + sdf);
 
         long endTime = calendar.getTimeInMillis();
-        //calendar.add(Calendar.DAY_OF_YEAR, -1);
-//        long startTime = calendar.getTimeInMillis() - 24*60*60*1000;
         long startTime = calendar.getTimeInMillis() - 24*60*60*1000*7;
-
-
-//        long endTime = calendar.getTimeInMillis() - 24*60*60*1000;
-//        //calendar.add(Calendar.DAY_OF_YEAR, -1);
-//        long startTime = calendar.getTimeInMillis() - 24*60*60*1000+1000000 ;
-
 
         Log.d(TAG, "getUsageStatsList: endtime: " + endTime + "starttime: " + startTime);
 
@@ -58,7 +50,6 @@ public class UStats {
 
         Log.d(TAG, "getUsageStatsList: data start time: " + one);
         Log.d(TAG, "getUsageStatsList: date endtime:  " + two);
-        //time = two.toString();
         time = endTime;
 
         List<UsageStats> usageStatsList = usm.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,  startTime,endTime);     // calendar.getTimeInMillis(), System.currentTimeMillis()); //(UsageStatsManager.INTERVAL_DAILY,startTime,endTime);
@@ -91,33 +82,16 @@ public class UStats {
     }
 
 
-    // attempt to find out what the fuck is going on with usage stats manager
-
-
-
     public static String printUsageStats(List<UsageStats> usageStatsList, Context context){
 
         Log.d(TAG, "printUsageStats: in print");
-
         String uri = (context.getExternalFilesDir(null) + directoryName + "AppUsage_" + time + ".txt");
-
-
-
-        Log.d(TAG, "printUsageStats: The string URI for file is: " + uri);
-
-
         File file = new File(uri);
-
-
         if(file.length() == 0){
             WriteToFileHelper.writeHeader(file);
         }
 
-//        JSONArray jsonArray = new JSONArray();
-//        JSONObject object = null;
-
         FileOutputStream fos = null;
-        //Constants.writeHeaderToFile(file, Constants.secureID + "," + Constants.modelName + "," + Constants.modelNumber + "," + Constants.androidVersion + "," + Constants.earsVersion +"\n");
         for (UsageStats u : usageStatsList){
 
             if(u.getTotalTimeInForeground() > 0){
@@ -160,57 +134,9 @@ public class UStats {
                         }
                     }
                 }
-
-
-
-
-
-                // end the protobuf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//                object = new JSONObject();
-//                try {
-//                    object.put("Package", u.getPackageName());
-//                    object.put("Time in foreground", u.getTotalTimeInForeground());
-//                    object.put("First Time stamp", u.getFirstTimeStamp());
-//                    object.put("Last time stamp", u.getLastTimeStamp());
-//                    object.put("Time last used",u.getLastTimeUsed());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                jsonArray.put(object);
-
-
             }
-
-
-
         }
 
-//        JSONObject finalObject = new JSONObject();
-//        try {
-//            finalObject.put("AppUsage", jsonArray);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Constants.writeHeaderToFile(file, Constants.secureID + "," + Constants.modelName + "," + Constants.modelNumber + "," + Constants.androidVersion + "," + Constants.earsVersion +"\n");
-//
-//        writeToFile(file, finalObject.toString());
         return uri;
     }
 

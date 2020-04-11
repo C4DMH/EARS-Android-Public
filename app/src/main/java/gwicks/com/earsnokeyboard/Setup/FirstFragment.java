@@ -18,17 +18,6 @@ public class FirstFragment extends Fragment {
 
     private static final String TAG = "FirstFragment";
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if (isVisibleToUser) {
-//            ((SetupStepOne) getActivity()).updateStatusBarColor("#07dddd", this);
-//            Log.d(TAG, "onCreateView: update coulour in : 2");
-//
-//        } else {
-//            Log.d(TAG, "setUserVisibleHint: in else");
-//        }
-//    }
 
 
 

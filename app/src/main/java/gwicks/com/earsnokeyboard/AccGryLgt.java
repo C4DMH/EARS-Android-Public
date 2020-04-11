@@ -124,9 +124,6 @@ public class AccGryLgt extends Service implements SensorEventListener {
             NotificationChannel channel = mNotificationManager.getNotificationChannel(CHANNEL_DI);
             if(channel == null){
                 channel = new NotificationChannel(CHANNEL_DI, "Oreo", NotificationManager.IMPORTANCE_LOW);
-
-//                channel.enableVibration(true);
-//                channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
                 mNotificationManager.createNotificationChannel(channel);
             }
 
@@ -138,7 +135,6 @@ public class AccGryLgt extends Service implements SensorEventListener {
                             .setOngoing(false)
                             .setChannelId(CHANNEL_DI)
                             .build();
-            //mNotificationManager.notify("first",1, mBuilder);
             Log.d(TAG, "onStartCommand: notification should be built");
             startForeground(1, mBuilder);
         }
@@ -163,11 +159,9 @@ public class AccGryLgt extends Service implements SensorEventListener {
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "AccGryLgt - Service");
 
-        //path = Environment.getExternalStorageDirectory() +"/VIDEODIARY";
         path2 = (getExternalFilesDir(null) + "/");
         Log.d(TAG, "AccGryLgt:  the path to externalfilesdir is: " + path2);
 
-        //File directory = new File(path);
         File directory2 = new File(path2);
 
         if(!directory2.exists()){
@@ -183,7 +177,6 @@ public class AccGryLgt extends Service implements SensorEventListener {
         if(sensorManager != null){
             sensorManager.unregisterListener(this);
         }
-       // sensorManager.unregisterListener(this);
         wakeLock.release();
         DestroyFile = new File(path2 +"ACCEL/Destroy_Service.txt");
         writeToFile(DestroyFile, "the file was destroyed at: ");
@@ -194,7 +187,6 @@ public class AccGryLgt extends Service implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             long TS = System.currentTimeMillis();
-
 
             // Filter to remove readings that come too often
             if (TS < LAST_TS_ACC + 100) {

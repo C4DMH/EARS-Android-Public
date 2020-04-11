@@ -70,10 +70,7 @@ public class WriteToFileHelper {
             }
         }
         Log.d(TAG, "onCreate: after header");
-
-
         return file;
-
     }
 
 

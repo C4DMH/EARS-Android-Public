@@ -166,10 +166,6 @@ public class SetupStepThree extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-
-
-
-
     // Addded location for checking 19th Feb 2019
 
     public boolean checkLocationPermission() {
@@ -211,38 +207,5 @@ public class SetupStepThree extends AppCompatActivity {
             return true;
         }
     }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode,
-//                                           String permissions[], int[] grantResults) {
-//        switch (requestCode) {
-//            case MY_PERMISSIONS_REQUEST_LOCATION: {
-//                // If request is cancelled, the result arrays are empty.
-//                if (grantResults.length > 0
-//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//
-//                    // permission was granted, yay! Do the
-//                    // location-related task you need to do.
-//                    if (ContextCompat.checkSelfPermission(this,
-//                            Manifest.permission.ACCESS_FINE_LOCATION)
-//                            == PackageManager.PERMISSION_GRANTED) {
-//
-//                        //Request location updates:
-//                        locationManager.requestLocationUpdates(provider, 400, 1, this);
-//                    }
-//
-//                } else {
-//
-//                    // permission denied, boo! Disable the
-//                    // functionality that depends on this permission.
-//
-//                }
-//                return;
-//            }
-//
-//        }
-//    }
-
-
 
 }

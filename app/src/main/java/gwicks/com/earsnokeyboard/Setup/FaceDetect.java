@@ -59,265 +59,7 @@ import gwicks.com.earsnokeyboard.Util;
  */
 
 public class FaceDetect extends AppCompatActivity {
-    //
-//    private static final String TAG = "MainActivity";
-//
-//
-//
-//    public SharedPreferences photoTick;
-//    public static final String TICK = "MyPrefFile";
-//
-//    ImageView button;
-//    ImageView button2;
-//    ImageView belowPic;
-//
-//    TextView abovePic;
-//
-//    boolean secondScreen = false;
-//
-//
-//    Bitmap editedBitmap;
-//    public Uri imageUri;
-//    private static final int REQUEST_WRITE_PERMISSION = 200;
-//    private static final int CAMERA_REQUEST = 101;
-//
-//    private static final String SAVED_INSTANCE_URI = "uri";
-//    private static final String SAVED_INSTANCE_BITMAP = "bitmap";
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.setup_six);
-//        updateStatusBarColor("#1281e8");
-//
-//        Log.d(TAG, "onCreate: before set click");
-//
-//        abovePic = (TextView)findViewById(R.id.aboveImage);
-//
-//
-//        button = (ImageView)findViewById(imageView40);
-//        button2 = (ImageView)findViewById(profile_image);
-//        belowPic = (ImageView)findViewById(imageView39);
-//
-//        button.setOnClickListener(new View.OnClickListener(){
-//
-//
-//            @Override
-//            public void onClick(View view){
-//                Log.d(TAG, "onClick: Clicked");
-//                Log.d(TAG, "onClick: secondscreen = " + secondScreen);
-//
-//                if(secondScreen == false){
-//                    Log.d(TAG, "onClick: in false");
-//
-//
-//                    ActivityCompat.requestPermissions(FaceDetect.this, new
-//                            String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
-//
-//                }
-//                Log.d(TAG, "onClick: second screen = " + secondScreen);
-//                if(secondScreen == true){
-//                    Log.d(TAG, "onClick: in true");
-//                    goToFinish();
-//                }
-//
-//
-//
-//
-//
-//
-//            }
-//        });
-//        Log.d(TAG, "onCreate: after onclick set");
-//        button2.setOnClickListener(new View.OnClickListener(){
-//
-//
-//            @Override
-//            public void onClick(View view){
-//                Log.d(TAG, "onClick: Clicked");
-//
-//                ActivityCompat.requestPermissions(FaceDetect.this, new
-//                        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
-//
-//
-//            }
-//        });
-//
-//
-//
-//
-//    }
-//
-//    public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            Log.d(TAG, "updateStatusBarColor: color change being called!");
-//            Window window = getWindow();
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(Color.parseColor(color));
-//        }
-//    }
-//
-//    private void goToFinish(){
-//        Log.d(TAG, "goToFinish: go to finish");
-//        Intent intent = new Intent(FaceDetect.this, StepSeven.class);
-//        FaceDetect.this.startActivity(intent);
-//    }
-//
-//    private void initViews() {
-//        //imageView = (ImageView) findViewById(R.id.imageView);
-//        //imgTakePicture = (ImageView) findViewById(R.id.profile_image);
-//        //btnProcessNext = (Button) findViewById(R.id.btnProcessNext);
-//        //btnTakePicture = (ImageView) findViewById(imageView40);
-//        //txtSampleDesc = (TextView) findViewById(R.id.txtSampleDescription);
-//        //txtTakenPicDesc = (TextView) findViewById(R.id.textView);
-//
-//        //processImage(imageArray[currentIndex]);
-//        //currentIndex++;
-//
-//        //btnProcessNext.setOnClickListener(this);
-//        //btnTakePicture.setOnClickListener(this);
-//        //imgTakePicture.setOnClickListener(this);
-//    }
-//
-//
-//
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        switch (requestCode) {
-//            case REQUEST_WRITE_PERMISSION:
-//                startCamera();
-////                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-////                    startCamera();
-////                } else {
-////                    Toast.makeText(getApplicationContext(), "Permission Denied!", Toast.LENGTH_SHORT).show();
-////                }
-//        }
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Log.d(TAG, "onActivityResult: this is resyult");
-//        if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-//            Log.d(TAG, "onActivityResult: IMAGWURI = " + imageUri);
-//
-//            //Failed on smj700
-//
-////
-////            Bundle extras  = data.getExtras();
-////
-////            Bitmap bitmap = (Bitmap) extras.get("data");
-////            button.setImageResource(R.drawable.complete_install);
-////            button2.setImageBitmap(bitmap);
-////            abovePic.setText("Great! Are you good with your picture?");
-////            belowPic.setImageResource(R.drawable.take_a_different_pic);
-//
-//            // Try new
-//            button.setImageResource(R.drawable.complete_install);
-//            button2.setImageURI(null);
-//            button2.setImageURI(imageUri);
-//            abovePic.setText("Great! Are you good with your picture?");
-//            belowPic.setImageResource(R.drawable.take_a_different_pic);
-//
-//            //finish
-//
-//            belowPic.setOnClickListener(new View.OnClickListener(){
-//
-//
-//                @Override
-//                public void onClick(View view){
-//                    Log.d(TAG, "onClick: Clicked");
-//                    startCamera();
-//
-//
-//
-//                }
-//            });
-//
-//            Log.d(TAG, "onActivityResult: chagning secondScreen to true!");
-//
-//            secondScreen = true;
-//            Log.d(TAG, "onActivityResult: Now changed to True!!");
-//
-//        }
-//    }
-//
-////    private void launchMediaScanIntent() {
-////        Log.d(TAG, "launchMediaScanIntent: ");
-////        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-////        mediaScanIntent.setData(imageUri);
-////        this.sendBroadcast(mediaScanIntent);
-////    }
-//
-//    private void startCamera() {
-//        Log.d(TAG, "startCamera: ");
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        //Log.d(TAG, "startCamera: 2");
-//        File photo = new File(getExternalFilesDir(null), "/videoDIARY/ReferencePic/referencePhoto.jpg");
-//        //Log.d(TAG, "startCamera: 3");
-//        //File photo = new File(Environment.getExternalStorageDirectory(), "/videoDIARY/ReferencePic/photo.jpg");
-//
-//        try
-//        {
-//            if(photo.exists() == false)
-//                Log.d(TAG, "startCamera:2 ");
-//            {
-//                photo.getParentFile().mkdirs();
-//                Log.d(TAG, "startCamera: 1");
-//                photo.createNewFile();
-//            }
-//        }
-//        catch (IOException e)
-//        {
-//            Log.e(TAG, "Could not create file.", e);
-//        }
-//        imageUri = Uri.fromFile(photo);
-//        Log.d(TAG, "startCamera: image uri - " + imageUri);
-//        Log.d(TAG, "startCamera: 4");
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-//        //intent.putExtra("android.intent.extras.CAMERA_FACING", android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT);
-//        //intent.putExtra("android.intent.extras.LENS_FACING_FRONT", 1);
-//        //intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
-//        //intent.putExtra("android.intent.extras.CAMERA_FACING",1);
-//        Log.d(TAG, "startCamera: 5");
-//        startActivityForResult(intent, CAMERA_REQUEST);
-//        Log.d(TAG, "startCamera: 6");
-//    }
-//
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        Log.d(TAG, "onSaveInstanceState: ");
-//        if (imageUri != null) {
-//            Log.d(TAG, "onSaveInstanceState: 1");
-//            outState.putParcelable(SAVED_INSTANCE_BITMAP, editedBitmap);
-//            Log.d(TAG, "onSaveInstanceState: 2");
-//            outState.putString(SAVED_INSTANCE_URI, imageUri.toString());
-//            Log.d(TAG, "onSaveInstanceState: 3");
-//        }
-//        Log.d(TAG, "onSaveInstanceState: 4");
-//        super.onSaveInstanceState(outState);
-//        Log.d(TAG, "onSaveInstanceState: 5");
-//    }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//
-//    }
-//
-//
-//
-//
+
 //}
     private static final String TAG = "FaceDetect";
 
@@ -404,17 +146,8 @@ public class FaceDetect extends AppCompatActivity {
             //startActivityFor
 
         }
-//        updateStatusBarColor("#1281e8");
 
         Log.d(TAG, "onCreate: before set click");
-
-//        abovePic = (TextView)findViewById(R.id.aboveImage);
-
-
-//        button = (ImageView)findViewById(R.id.imageView40);
-//        button2 = (ImageView)findViewById(R.id.profile_image);
-//        belowPic = (ImageView)findViewById(R.id.imageView39);
-        //belowPic = (TextView)findViewById(imageView39);
 
 
         button.setOnClickListener(new View.OnClickListener(){
@@ -439,12 +172,6 @@ public class FaceDetect extends AppCompatActivity {
                     Log.d(TAG, "onClick: in true");
                     goToFinish();
                 }
-
-
-
-
-
-
             }
         });
         Log.d(TAG, "onCreate: after onclick set");
@@ -456,16 +183,8 @@ public class FaceDetect extends AppCompatActivity {
                 Log.d(TAG, "onClick: Clicked");
                 Log.d(TAG, "onClick: 1.1");
 
-//                ActivityCompat.requestPermissions(FaceDetect.this, new
-//                        String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_PERMISSION);
-
-
             }
         });
-
-
-
-
     }
 
     public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
@@ -527,19 +246,7 @@ public class FaceDetect extends AppCompatActivity {
     }
 
     private void initViews() {
-        //imageView = (ImageView) findViewById(R.id.imageView);
-        //imgTakePicture = (ImageView) findViewById(R.id.profile_image);
-        //btnProcessNext = (Button) findViewById(R.id.btnProcessNext);
-        //btnTakePicture = (ImageView) findViewById(imageView40);
-        //txtSampleDesc = (TextView) findViewById(R.id.txtSampleDescription);
-        //txtTakenPicDesc = (TextView) findViewById(R.id.textView);
 
-        //processImage(imageArray[currentIndex]);
-        //currentIndex++;
-
-        //btnProcessNext.setOnClickListener(this);
-        //btnTakePicture.setOnClickListener(this);
-        //imgTakePicture.setOnClickListener(this);
     }
 
 
@@ -551,16 +258,9 @@ public class FaceDetect extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_WRITE_PERMISSION:
                 startCamera();
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    startCamera();
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Permission Denied!", Toast.LENGTH_SHORT).show();
-//                }
+
             case REQUEST_CAMERA_PERMISSION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-
-                    // main logic
                 } else {
                     Toast.makeText(getApplicationContext(), "Permission Denied", Toast.LENGTH_SHORT).show();}
         }
@@ -572,22 +272,9 @@ public class FaceDetect extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Log.d(TAG, "onActivityResult: IMAGWURI = " + imageUri);
 
-            //Failed on smj700
-
-//
-//            Bundle extras  = data.getExtras();
-//
-//            Bitmap bitmap = (Bitmap) extras.get("data");
-//            button.setImageResource(R.drawable.complete_install);
-//            button2.setImageBitmap(bitmap);
-//            abovePic.setText("Great! Are you good with your picture?");
-//            belowPic.setImageResource(R.drawable.take_a_different_pic);
 
             // Try new
             button.setImageResource(R.drawable.complete_install);
-//            button2.setImageURI(null);
-//            button2.setImageURI(imageUri);
-
             Bitmap bitmap = null;
 
             try {
@@ -601,9 +288,6 @@ public class FaceDetect extends AppCompatActivity {
             belowPic.setImageResource(R.drawable.take_a_different_pic);
             //belowPic.setText("Take another PIC?");
             button2.setImageBitmap(bitmap);
-
-            //finish
-
             belowPic.setOnClickListener(new View.OnClickListener(){
 
 
@@ -611,9 +295,6 @@ public class FaceDetect extends AppCompatActivity {
                 public void onClick(View view){
                     Log.d(TAG, "onClick: Clicked");
                     startCamera();
-
-
-
                 }
             });
 
@@ -694,20 +375,11 @@ public class FaceDetect extends AppCompatActivity {
     }
 
 
-//    private void launchMediaScanIntent() {
-//        Log.d(TAG, "launchMediaScanIntent: ");
-//        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-//        mediaScanIntent.setData(imageUri);
-//        this.sendBroadcast(mediaScanIntent);
-//    }
-
     private void startCamera() {
         Log.d(TAG, "startCamera: ");
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         //Log.d(TAG, "startCamera: 2");
         File photo = new File(getExternalFilesDir(null), "/videoDIARY/ReferencePic/referencePhoto.jpg");
-        //Log.d(TAG, "startCamera: 3");
-        //File photo = new File(Environment.getExternalStorageDirectory(), "/videoDIARY/ReferencePic/photo.jpg");
 
         try
         {
@@ -727,10 +399,6 @@ public class FaceDetect extends AppCompatActivity {
         Log.d(TAG, "startCamera: image uri - " + imageUri);
         Log.d(TAG, "startCamera: 4");
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        //intent.putExtra("android.intent.extras.CAMERA_FACING", android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT);
-        //intent.putExtra("android.intent.extras.LENS_FACING_FRONT", 1);
-        //intent.putExtra("android.intent.extra.USE_FRONT_CAMERA", true);
-        //intent.putExtra("android.intent.extras.CAMERA_FACING",1);
         Log.d(TAG, "startCamera: 5");
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -758,15 +426,6 @@ public class FaceDetect extends AppCompatActivity {
     public void onBackPressed() {
         moveTaskToBack(true);
     }
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -804,9 +463,6 @@ public class FaceDetect extends AppCompatActivity {
         Log.d(TAG, "Encrypt: path2 is: " + path2);
         //beginUpload2("STATS", path2);
         return path2;
-
-
-
     }
 
 
