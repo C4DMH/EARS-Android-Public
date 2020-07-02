@@ -38,6 +38,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.ActivityRecognition;
+import com.google.android.gms.location.ActivityTransition;
+import com.google.android.gms.location.ActivityTransitionRequest;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -58,14 +61,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import gwicks.com.earsnokeyboard.AccGryLgt;
 import gwicks.com.earsnokeyboard.AnyApplication;
 import gwicks.com.earsnokeyboard.Constants;
+import gwicks.com.earsnokeyboard.CreateTransitionList;
 import gwicks.com.earsnokeyboard.DailyEMAAlarmReceiver;
 import gwicks.com.earsnokeyboard.DailyEMAUploadReceiver;
 import gwicks.com.earsnokeyboard.EMAAlarmReceiver;
@@ -82,6 +88,7 @@ import gwicks.com.earsnokeyboard.StatsAlarmReceiver;
 import gwicks.com.earsnokeyboard.StatsJobService;
 import gwicks.com.earsnokeyboard.SuicideAlarmReceiver;
 import gwicks.com.earsnokeyboard.UploadGPSAlarmReceiver;
+import gwicks.com.earsnokeyboard.UsageStatsWorker;
 
 /**
  * Created by gwicks on 11/05/2018.
@@ -1248,6 +1255,67 @@ public class FinishInstallScreen extends AppCompatActivity {
                     Log.d(TAG, "onActivityResult: app update failed");
             }
         }
+    }
+
+    public void setupActivityTracking() {
+
+        Log.d(TAG, "setupActivityTracking: begin setup");
+
+        List<ActivityTransition> transitionList = CreateTransitionList.createTransitionList();
+        ActivityTransitionRequest request = new ActivityTransitionRequest(transitionList);
+
+
+        Intent intent = new Intent(this, ActivityTransitionBroadcastReceiver.class);
+        intent.setAction(ActivityTransitionBroadcastReceiver.INTENT_ACTION);
+        PendingIntent transitionPendingIntent = PendingIntent.getBroadcast(FinishInstallScreen.this, 0, intent,  PendingIntent.FLAG_UPDATE_CURRENT);
+
+        com.google.android.gms.tasks.Task<Void> task =
+                ActivityRecognition.getClient(this)
+                        .requestActivityTransitionUpdates(request, transitionPendingIntent);
+
+
+        task.addOnSuccessListener(
+                new com.google.android.gms.tasks.OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void result) {
+                        Log.d(TAG, "onSuccess: Activity Tracking registered");
+
+                    }
+                });
+        task.addOnFailureListener(
+                new com.google.android.gms.tasks.OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Log.e(TAG, "Transitions Api could NOT be registered: " + e);
+
+                    }
+                });
+//        }
+    }
+
+    private boolean activityRecognitionPermissionApproved() {
+        Log.d(TAG, "activityRecognitionPermissionApproved: ");
+
+        // TODO: Review permission check for 29+.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            Log.d(TAG, "activityRecognitionPermissionApproved:  10 or greater");
+
+            return PackageManager.PERMISSION_GRANTED == ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACTIVITY_RECOGNITION
+            );
+        } else {
+            return true;
+        }
+    }
+
+    public void startRegularAppUsage(int timeInterval){
+        Log.d(TAG, "startRegularAppUsage: starting ustats manager, interval: " + timeInterval);
+
+        mWorkManager = WorkManager.getInstance(this);
+        PeriodicWorkRequest mRequest = new PeriodicWorkRequest.Builder(UsageStatsWorker.class, timeInterval, TimeUnit.MINUTES).build();
+        mWorkManager.enqueueUniquePeriodicWork("GpsWorker", ExistingPeriodicWorkPolicy.KEEP, mRequest);
     }
 
 
